@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <form id="calculatorForm">
+                    <h1>Operaciones básicas</h1>
+                    <div class="form-group">
+                        <label for="n1">N1:</label>
+                        <input type="text" class="form-control" id="n1" name="n1">
+                    </div>
+                    <div class="form-group">
+                        <label for="n2">N2:</label>
+                        <input type="text" class="form-control" id="n2" name="n2">
+                    </div>
+                    <div class="form-group">
+                        <label>Operación:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="operation" id="suma" value="suma" checked>
+                            <label class="form-check-label" for="suma">Suma</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="operation" id="resta" value="resta">
+                            <label class="form-check-label" for="resta">Resta</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="operation" id="multiplica" value="multiplica">
+                            <label class="form-check-label" for="multiplica">Multiplicación</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="operation" id="divide" value="divide">
+                            <label class="form-check-label" for="divide">División</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div id="resultContainer" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px;
+        }
+        .tr-head {
+            background: #dff0d8;
+        }
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="">
+                    IDGS-802
+                </a>
+                <ul class="nav">
+                    <li class="active">
+                        <a href="">
+                            <i class="icon-home icon-white"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="icon-user icon-white"></i>
+                            Usuarios
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="icon-user icon-white"></i>
+                            Alumnos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% block content%}
+
+        {% endblock %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('calculatorForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Evitar el envío del formulario tradicional
+
+                // Obtener los valores del formulario
+                var n1 = parseFloat(document.getElementById('n1').value);
+                var n2 = parseFloat(document.getElementById('n2').value);
+                var operation = document.querySelector('input[name="operation"]:checked').value;
+
+                // Verificar si los valores son números válidos
+                if (isNaN(n1) || isNaN(n2)) {
+                    alert('Por favor, ingrese números válidos.');
+                    return;
+                }
+
+                // Realizar la operación
+                var result;
+                switch (operation) {
+                    case 'suma':
+                        result = n1 + n2;
+                        break;
+                    case 'resta':
+                        result = n1 - n2;
+                        break;
+                    case 'multiplica':
+                        result = n1 * n2;
+                        break;
+                    case 'divide':
+                        if (n2 !== 0) {
+                            result = n1 / n2;
+                        } else {
+                            alert('No se puede dividir por cero.');
+                            return;
+                        }
+                        break;
+                    default:
+                        alert('Operación no válida');
+                        return;
+                }
+
+                // Mostrar el resultado con estilo
+                var resultContainer = document.getElementById('resultContainer');
+                resultContainer.innerHTML = '<h1 class="text-dark">El resultado es: ' + result + '</h1>';
+                resultContainer.classList.add('border', 'p-3', 'rounded');
+            });
+        });
+    </script>
+</body>
+</html>
