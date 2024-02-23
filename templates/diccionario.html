@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diccionario</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .form-container {
+            width: 50%;
+            margin-right: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .words-container {
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .word {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Diccionario Inglés - Español</h1>
+            <form method="POST">
+                {{ form.csrf_token }}
+                <p>
+                    {{ form.word_english.label }} {{ form.word_english }}
+                    {{ form.word_english.errors }}
+                </p>
+                <p>
+                    {{ form.word_spanish.label }} {{ form.word_spanish }}
+                    {{ form.word_spanish.errors }}
+                </p>
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+        <div class="words-container">
+            <h2>Palabras Guardadas</h2>
+            {% for word in dictionary %}
+                <div class="word">{{ word }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="/Diccionario">
+                {{ form.csrf_token }}
+                <p>Buscar palabra:</p>
+                <input type="text" name="search_word">
+                <p>Seleccionar idioma:</p>
+                <input type="radio" name="language" value="English" checked> Inglés
+                <input type="radio" name="language" value="Spanish"> Español
+                <br><br>
+                <input type="submit" value="Buscar">
+            </form>
+            {% if palabra %}
+                <p>{{ palabra }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

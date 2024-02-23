@@ -1,0 +1,6 @@
+cellphone - Celular
+blue - Azul
+table - Mesa
+table - Mesa
+blue - Azul
+clock - reloj

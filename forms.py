@@ -1,4 +1,12 @@
 from wtforms import Form, SelectField, RadioField
+from wtforms import Form
+from wtforms import StringField, TextAreaField,SelectField,RadioField, IntegerField
+from wtforms import EmailField
+from wtforms import validators
+
+class DictionaryForm(Form):
+    word_english = StringField('Ingles:', validators=[validators.InputRequired()])
+    word_spanish = StringField('Español:', validators=[validators.InputRequired()])
 
 class ResistanceForm(Form):
     colores = [
@@ -22,3 +30,8 @@ class ResistanceForm(Form):
     color2 = SelectField('Color 2', choices=colores)
     color3 = SelectField('Color 3', choices=colores)
     tolerancia = RadioField('Tolerancia', choices=tolerancias)
+    
+class DictionaryForm(Form):
+    word_english = StringField('Ingles:', validators=[validators.InputRequired()])
+    word_spanish = StringField('Español:', validators=[validators.InputRequired()])
+
